@@ -26,29 +26,29 @@ void yyerror(char *);
 /* Gramatica */
 
 expr:   
-        |   term masterm  
+        |   term masterm        {printf("1");}
         ;
 
 masterm:
-            suma masterm
-        |   resta masterm
-        |
+            suma masterm        {printf("2");}
+        |   resta masterm       {printf("3");}
+        |                       {printf("4");}
         ;
 
 
 term:
-        factor masfactor
+        factor masfactor        {printf("5");}
         ;
 
 masfactor:
-            multiplicacion factor masfactor
-        |   division factor masfactor
-        |                                       {}
+            multiplicacion factor masfactor     {printf("6");}
+        |   division factor masfactor           {printf("7");}
+        |                                       {printf("8");}
         ;
 
 
 factor:  
-        entero  {$$ = $1;}
+        entero                                  {printf("\n %d", $1);}
         ;
 
 

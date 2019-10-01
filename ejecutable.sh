@@ -5,4 +5,4 @@ rm -r y.tab.c
 rm -r y.tab.h
 rm -r lex.yy.c
 
-./salida < informacion.txt
+./SoftSemantico < informacion.txt

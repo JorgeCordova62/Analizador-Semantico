@@ -16,13 +16,13 @@ division                [/]
 
 
 %%
-{entero}               {printf("entero"); return entero;}
-{suma}                 {printf("suma"); return suma;}
-{resta}                {printf("resta"); return resta;}
-{multiplicacion}       {printf("multi"); return multiplicacion;}
-{division}             {printf("divi"); return division;}
+{entero}               { return entero;}
+{suma}                 { return suma;}
+{resta}                { return resta;}
+{multiplicacion}       { return multiplicacion;}
+{division}             { return division;}
 " "                     ;
-.                      {printf("cualquiera"); return *yytext;}
+.                      { return *yytext;}
 
 
 
