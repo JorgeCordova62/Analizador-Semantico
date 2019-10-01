@@ -21,7 +21,8 @@ void yyerror(char *);
 %token <oper>   resta
 %token <oper>   multiplicacion
 %token <oper>   division
-%type <ent> factor;
+%type <ent> factor
+%type <ent> masfactor
 %%
 
 

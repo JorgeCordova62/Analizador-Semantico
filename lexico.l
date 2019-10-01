@@ -19,7 +19,7 @@ division                [/]
 
 %%
 {entero}               { yylval.ent = atoi(yytext); return entero; }
-{suma}                 { return suma;}
+{suma}                 {  return suma;}
 {resta}                { return resta;}
 {multiplicacion}       { return multiplicacion;}
 {division}             { return division;}

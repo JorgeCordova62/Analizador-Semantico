@@ -418,8 +418,8 @@ static const yytype_int8 yyrhs[] =
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    30,    30,    31,    35,    36,    37,    42,    46,    47,
-      48,    53
+       0,    31,    31,    32,    36,    37,    38,    43,    47,    48,
+      49,    54
 };
 #endif
 
@@ -1324,47 +1324,47 @@ yyreduce:
   switch (yyn)
     {
         case 3:
-#line 31 "Semantico.y"
+#line 32 "Semantico.y"
     { printf("** 1 ** \n");}
     break;
 
   case 4:
-#line 35 "Semantico.y"
+#line 36 "Semantico.y"
     { printf("** 2 ** \n");}
     break;
 
   case 5:
-#line 36 "Semantico.y"
+#line 37 "Semantico.y"
     { printf("** 3 ** \n");}
     break;
 
   case 6:
-#line 37 "Semantico.y"
+#line 38 "Semantico.y"
     { printf("** 4 ** \n");}
     break;
 
   case 7:
-#line 42 "Semantico.y"
+#line 43 "Semantico.y"
     { printf("** 5 ** \n");}
     break;
 
   case 8:
-#line 46 "Semantico.y"
+#line 47 "Semantico.y"
     { printf("** 6 ** \n");}
     break;
 
   case 9:
-#line 47 "Semantico.y"
+#line 48 "Semantico.y"
     { printf("** 7 : %d ** \n", (yyvsp[(1) - (3)].oper));}
     break;
 
   case 10:
-#line 48 "Semantico.y"
+#line 49 "Semantico.y"
     { printf("** 8 ** \n");}
     break;
 
   case 11:
-#line 53 "Semantico.y"
+#line 54 "Semantico.y"
     { (yyval.ent) = (yyvsp[(1) - (1)].ent); printf("-- %d -- \n", (yyvsp[(1) - (1)].ent));}
     break;
 
@@ -1584,7 +1584,7 @@ yyreturn:
 }
 
 
-#line 61 "Semantico.y"
+#line 62 "Semantico.y"
 
 
 /* Ejecucion del programa*/
