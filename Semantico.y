@@ -12,6 +12,8 @@ void yyerror(char *);
     char *oper;
     int ent;
 }
+
+
 /* Tokens utilizados para la deteccion del analizador*/
 
 %token <ent>    entero
@@ -19,36 +21,36 @@ void yyerror(char *);
 %token <oper>   resta
 %token <oper>   multiplicacion
 %token <oper>   division
-
+%type <ent> factor;
 %%
 
 
 /* Gramatica */
 
 expr:   
-        |   term masterm        {printf("1");}
+        |   term masterm                { printf("** 1 ** \n");} 
         ;
 
 masterm:
-            suma masterm        {printf("2");}
-        |   resta masterm       {printf("3");}
-        |                       {printf("4");}
+            suma masterm                { printf("** 2 ** \n");} 
+        |   resta masterm               { printf("** 3 ** \n");} 
+        |                               { printf("** 4 ** \n");} 
         ;
 
 
 term:
-        factor masfactor        {printf("5");}
+        factor masfactor                { printf("** 5 ** \n");} 
         ;
 
 masfactor:
-            multiplicacion factor masfactor     {printf("6");}
-        |   division factor masfactor           {printf("7");}
-        |                                       {printf("8");}
+            multiplicacion factor masfactor    { printf("** 6 ** \n");}  
+        |   division factor masfactor          { printf("** 7 : %d ** \n", $1);} 
+        |                                      { printf("** 8 ** \n");} 
         ;
 
 
 factor:  
-        entero                                  {printf("\n %d", $1);}
+        entero                                  { $$ = $1; printf("-- %d -- \n", $1);} 
         ;
 
 
