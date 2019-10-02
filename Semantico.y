@@ -17,41 +17,47 @@ void yyerror(char *);
 /* Tokens utilizados para la deteccion del analizador*/
 
 %token <ent>    entero
-%token <oper>   suma
-%token <oper>   resta
-%token <oper>   multiplicacion
-%token <oper>   division
+%left <oper>   suma
+%left <oper>   resta
+%left <oper>   multiplicacion
+%left <oper>   division
+
 %type <ent> factor
 %type <ent> masfactor
+%type <ent> term
+%type <ent> masterm
+%type <ent> expr
+
+%start  expr
 %%
 
 
 /* Gramatica */
 
 expr:   
-        |   term masterm                { printf("** 1 ** \n");} 
+        term masterm                { $2 = $<ent>0; $$ = $1; printf("** 1: %d ** \n",$$);} 
         ;
 
 masterm:
-            suma masterm                { printf("** 2 ** \n");} 
-        |   resta masterm               { printf("** 3 ** \n");} 
-        |                               { printf("** 4 ** \n");} 
+            suma term masterm                { $2 =$<ent>0 - $2; $$ = $2;  printf("** 2: %d ** \n",$$);} 
+        |   resta term masterm               { $2 =$<ent>0 - $2; $$ = $2;  printf("** 3: %d ** \n",$$);} 
+        |                               { $$ =  $<ent>0; printf("** 4: %d ** \n",$$);} 
         ;
 
 
 term:
-        factor masfactor                { printf("** 5 ** \n");} 
+        factor masfactor                {$2= $<ent>0; $$ = $2; printf("** 5: %d ** \n",$$);} 
         ;
 
 masfactor:
-            multiplicacion factor masfactor    { printf("** 6 ** \n");}  
-        |   division factor masfactor          { printf("** 7 : %d ** \n", $1);} 
-        |                                      { printf("** 8 ** \n");} 
+            multiplicacion factor masfactor    { $3 = $<ent>0*$2; $$=$3; printf("** 6: %d ** \n", $$);}  
+        |   division factor masfactor          { $3 = $<ent>0/$2; $$=$3; printf("** 7: %d ** \n", $$);} 
+        |                                      { $$ = $<ent>0; printf("** 8: %d ** \n",$$);} 
         ;
 
 
 factor:  
-        entero                                  { $$ = $1; printf("-- %d -- \n", $1);} 
+        entero                                  { $$ = $1; printf("** 9: %d ** \n",$$);} 
         ;
 
 

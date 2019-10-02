@@ -348,16 +348,16 @@ union yyalloc
 /* YYFINAL -- State number of the termination state.  */
 #define YYFINAL  5
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   11
+#define YYLAST   13
 
 /* YYNTOKENS -- Number of terminals.  */
 #define YYNTOKENS  8
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  6
 /* YYNRULES -- Number of rules.  */
-#define YYNRULES  11
+#define YYNRULES  10
 /* YYNRULES -- Number of states.  */
-#define YYNSTATES  18
+#define YYNSTATES  20
 
 /* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
 #define YYUNDEFTOK  2
@@ -403,23 +403,23 @@ static const yytype_uint8 yytranslate[] =
    YYRHS.  */
 static const yytype_uint8 yyprhs[] =
 {
-       0,     0,     3,     4,     7,    10,    13,    14,    17,    21,
-      25,    26
+       0,     0,     3,     6,    10,    14,    15,    18,    22,    26,
+      27
 };
 
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
 static const yytype_int8 yyrhs[] =
 {
-       9,     0,    -1,    -1,    11,    10,    -1,     4,    10,    -1,
-       5,    10,    -1,    -1,    13,    12,    -1,     6,    13,    12,
-      -1,     7,    13,    12,    -1,    -1,     3,    -1
+       9,     0,    -1,    11,    10,    -1,     4,    11,    10,    -1,
+       5,    11,    10,    -1,    -1,    13,    12,    -1,     6,    13,
+      12,    -1,     7,    13,    12,    -1,    -1,     3,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    31,    31,    32,    36,    37,    38,    43,    47,    48,
-      49,    54
+       0,    38,    38,    42,    43,    44,    49,    53,    54,    55,
+      60
 };
 #endif
 
@@ -446,15 +446,15 @@ static const yytype_uint16 yytoknum[] =
 /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,     8,     9,     9,    10,    10,    10,    11,    12,    12,
-      12,    13
+       0,     8,     9,    10,    10,    10,    11,    12,    12,    12,
+      13
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
-       0,     2,     0,     2,     2,     2,     0,     2,     3,     3,
-       0,     1
+       0,     2,     2,     3,     3,     0,     2,     3,     3,     0,
+       1
 };
 
 /* YYDEFACT[STATE-NAME] -- Default rule to reduce with in state
@@ -462,8 +462,8 @@ static const yytype_uint8 yyr2[] =
    means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
-       2,    11,     0,     6,    10,     1,     6,     6,     3,     0,
-       0,     7,     4,     5,    10,    10,     8,     9
+       0,    10,     0,     5,     9,     1,     0,     0,     2,     0,
+       0,     6,     5,     5,     9,     9,     3,     4,     7,     8
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
@@ -477,14 +477,14 @@ static const yytype_int8 yydefgoto[] =
 #define YYPACT_NINF -8
 static const yytype_int8 yypact[] =
 {
-       8,    -8,     2,    -4,    -3,    -8,    -4,    -4,    -8,     8,
-       8,    -8,    -8,    -8,    -3,    -3,    -8,    -8
+      -1,    -8,    13,    -4,    -3,    -8,    -1,    -1,    -8,    -1,
+      -1,    -8,    -4,    -4,    -3,    -3,    -8,    -8,    -8,    -8
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -8,    -8,    -1,    -8,    -7,     0
+      -8,    -8,    -7,     1,    -5,     2
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -494,14 +494,14 @@ static const yytype_int8 yypgoto[] =
 #define YYTABLE_NINF -1
 static const yytype_uint8 yytable[] =
 {
-       6,     7,     5,     9,    10,    12,    13,    16,    17,    14,
-      15,     1
+       6,     7,     1,     9,    10,    16,    17,    12,    13,    18,
+      19,    14,    15,     5
 };
 
 static const yytype_uint8 yycheck[] =
 {
-       4,     5,     0,     6,     7,     6,     7,    14,    15,     9,
-      10,     3
+       4,     5,     3,     6,     7,    12,    13,     6,     7,    14,
+      15,     9,    10,     0
 };
 
 /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
@@ -509,7 +509,7 @@ static const yytype_uint8 yycheck[] =
 static const yytype_uint8 yystos[] =
 {
        0,     3,     9,    11,    13,     0,     4,     5,    10,     6,
-       7,    12,    10,    10,    13,    13,    12,    12
+       7,    12,    11,    11,    13,    13,    10,    10,    12,    12
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1323,49 +1323,49 @@ yyreduce:
   YY_REDUCE_PRINT (yyn);
   switch (yyn)
     {
-        case 3:
-#line 32 "Semantico.y"
-    { printf("** 1 ** \n");}
+        case 2:
+#line 38 "Semantico.y"
+    { (yyvsp[(2) - (2)].ent) = (yyvsp[(0) - (2)].ent); (yyval.ent) = (yyvsp[(1) - (2)].ent); printf("** 1: %d ** \n",(yyval.ent));}
+    break;
+
+  case 3:
+#line 42 "Semantico.y"
+    { (yyvsp[(2) - (3)].ent) =(yyvsp[(0) - (3)].ent) - (yyvsp[(2) - (3)].ent); (yyval.ent) = (yyvsp[(2) - (3)].ent);  printf("** 2: %d ** \n",(yyval.ent));}
     break;
 
   case 4:
-#line 36 "Semantico.y"
-    { printf("** 2 ** \n");}
+#line 43 "Semantico.y"
+    { (yyvsp[(2) - (3)].ent) =(yyvsp[(0) - (3)].ent) - (yyvsp[(2) - (3)].ent); (yyval.ent) = (yyvsp[(2) - (3)].ent);  printf("** 3: %d ** \n",(yyval.ent));}
     break;
 
   case 5:
-#line 37 "Semantico.y"
-    { printf("** 3 ** \n");}
+#line 44 "Semantico.y"
+    { (yyval.ent) =  (yyvsp[(0) - (0)].ent); printf("** 4: %d ** \n",(yyval.ent));}
     break;
 
   case 6:
-#line 38 "Semantico.y"
-    { printf("** 4 ** \n");}
+#line 49 "Semantico.y"
+    {(yyvsp[(2) - (2)].ent)= (yyvsp[(0) - (2)].ent); (yyval.ent) = (yyvsp[(2) - (2)].ent); printf("** 5: %d ** \n",(yyval.ent));}
     break;
 
   case 7:
-#line 43 "Semantico.y"
-    { printf("** 5 ** \n");}
+#line 53 "Semantico.y"
+    { (yyvsp[(3) - (3)].ent) = (yyvsp[(0) - (3)].ent)*(yyvsp[(2) - (3)].ent); (yyval.ent)=(yyvsp[(3) - (3)].ent); printf("** 6: %d ** \n", (yyval.ent));}
     break;
 
   case 8:
-#line 47 "Semantico.y"
-    { printf("** 6 ** \n");}
+#line 54 "Semantico.y"
+    { (yyvsp[(3) - (3)].ent) = (yyvsp[(0) - (3)].ent)/(yyvsp[(2) - (3)].ent); (yyval.ent)=(yyvsp[(3) - (3)].ent); printf("** 7: %d ** \n", (yyval.ent));}
     break;
 
   case 9:
-#line 48 "Semantico.y"
-    { printf("** 7 : %d ** \n", (yyvsp[(1) - (3)].oper));}
+#line 55 "Semantico.y"
+    { (yyval.ent) = (yyvsp[(0) - (0)].ent); printf("** 8: %d ** \n",(yyval.ent));}
     break;
 
   case 10:
-#line 49 "Semantico.y"
-    { printf("** 8 ** \n");}
-    break;
-
-  case 11:
-#line 54 "Semantico.y"
-    { (yyval.ent) = (yyvsp[(1) - (1)].ent); printf("-- %d -- \n", (yyvsp[(1) - (1)].ent));}
+#line 60 "Semantico.y"
+    { (yyval.ent) = (yyvsp[(1) - (1)].ent); printf("** 9: %d ** \n",(yyval.ent));}
     break;
 
 
@@ -1584,7 +1584,7 @@ yyreturn:
 }
 
 
-#line 62 "Semantico.y"
+#line 68 "Semantico.y"
 
 
 /* Ejecucion del programa*/
