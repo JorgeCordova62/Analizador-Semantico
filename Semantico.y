@@ -23,41 +23,38 @@ void yyerror(char *);
 %left <oper>   division
 
 %type <ent> factor
-%type <ent> masfactor
 %type <ent> term
-%type <ent> masterm
 %type <ent> expr
+%type <ent> inicial
 
-%start  expr
+%start  inicial
 %%
 
 
 /* Gramatica */
 
-expr:   
-        term masterm                { $2 = $<ent>0; $$ = $1; printf("** 1: %d ** \n",$$);} 
+inicial:
+        expr  {printf("Resultado es %d \n",$$);}
         ;
 
-masterm:
-            suma term masterm                { $2 =$<ent>0 - $2; $$ = $2;  printf("** 2: %d ** \n",$$);} 
-        |   resta term masterm               { $2 =$<ent>0 - $2; $$ = $2;  printf("** 3: %d ** \n",$$);} 
-        |                               { $$ =  $<ent>0; printf("** 4: %d ** \n",$$);} 
+expr:   term                            
+        | expr suma     term           {$$ = $1 + $3;} 
+        | expr resta  term              { $$ = $1 - $3;}
         ;
 
 
-term:
-        factor masfactor                {$2= $<ent>0; $$ = $2; printf("** 5: %d ** \n",$$);} 
+
+
+term:   factor
+        |   term multiplicacion factor  {$$ = $1 * $3;}
+        |   term division factor        {$$ = $1 / $3;}
         ;
 
-masfactor:
-            multiplicacion factor masfactor    { $3 = $<ent>0*$2; $$=$3; printf("** 6: %d ** \n", $$);}  
-        |   division factor masfactor          { $3 = $<ent>0/$2; $$=$3; printf("** 7: %d ** \n", $$);} 
-        |                                      { $$ = $<ent>0; printf("** 8: %d ** \n",$$);} 
-        ;
+
 
 
 factor:  
-        entero                                  { $$ = $1; printf("** 9: %d ** \n",$$);} 
+        entero                          { $$ = $1;} 
         ;
 
 
