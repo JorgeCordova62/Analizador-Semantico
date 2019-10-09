@@ -39,19 +39,23 @@
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     entero = 258,
-     suma = 259,
-     resta = 260,
-     multiplicacion = 261,
-     division = 262
+     flotante = 258,
+     entero = 259,
+     caracter = 260,
+     suma = 261,
+     resta = 262,
+     multiplicacion = 263,
+     division = 264
    };
 #endif
 /* Tokens.  */
-#define entero 258
-#define suma 259
-#define resta 260
-#define multiplicacion 261
-#define division 262
+#define flotante 258
+#define entero 259
+#define caracter 260
+#define suma 261
+#define resta 262
+#define multiplicacion 263
+#define division 264
 
 
 
@@ -61,10 +65,12 @@ typedef union YYSTYPE
 #line 11 "Semantico.y"
 {
     char *oper;
+    char *carac;
     int ent;
+    float flot;
 }
 /* Line 1529 of yacc.c.  */
-#line 68 "y.tab.h"
+#line 74 "y.tab.h"
 	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1

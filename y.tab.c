@@ -66,19 +66,23 @@
    /* Put the tokens into the symbol table, so that GDB and other debuggers
       know about them.  */
    enum yytokentype {
-     entero = 258,
-     suma = 259,
-     resta = 260,
-     multiplicacion = 261,
-     division = 262
+     flotante = 258,
+     entero = 259,
+     caracter = 260,
+     suma = 261,
+     resta = 262,
+     multiplicacion = 263,
+     division = 264
    };
 #endif
 /* Tokens.  */
-#define entero 258
-#define suma 259
-#define resta 260
-#define multiplicacion 261
-#define division 262
+#define flotante 258
+#define entero 259
+#define caracter 260
+#define suma 261
+#define resta 262
+#define multiplicacion 263
+#define division 264
 
 
 
@@ -117,10 +121,12 @@ typedef union YYSTYPE
 #line 11 "Semantico.y"
 {
     char *oper;
+    char *carac;
     int ent;
+    float flot;
 }
 /* Line 193 of yacc.c.  */
-#line 124 "y.tab.c"
+#line 130 "y.tab.c"
 	YYSTYPE;
 # define yystype YYSTYPE /* obsolescent; will be withdrawn */
 # define YYSTYPE_IS_DECLARED 1
@@ -133,7 +139,7 @@ typedef union YYSTYPE
 
 
 /* Line 216 of yacc.c.  */
-#line 137 "y.tab.c"
+#line 143 "y.tab.c"
 
 #ifdef short
 # undef short
@@ -346,22 +352,22 @@ union yyalloc
 #endif
 
 /* YYFINAL -- State number of the termination state.  */
-#define YYFINAL  6
+#define YYFINAL  7
 /* YYLAST -- Last index in YYTABLE.  */
-#define YYLAST   9
+#define YYLAST   8
 
 /* YYNTOKENS -- Number of terminals.  */
-#define YYNTOKENS  8
+#define YYNTOKENS  10
 /* YYNNTS -- Number of nonterminals.  */
 #define YYNNTS  5
 /* YYNRULES -- Number of rules.  */
 #define YYNRULES  9
 /* YYNRULES -- Number of states.  */
-#define YYNSTATES  15
+#define YYNSTATES  14
 
 /* YYTRANSLATE(YYLEX) -- Bison symbol number corresponding to YYLEX.  */
 #define YYUNDEFTOK  2
-#define YYMAXUTOK   262
+#define YYMAXUTOK   264
 
 #define YYTRANSLATE(YYX)						\
   ((unsigned int) (YYX) <= YYMAXUTOK ? yytranslate[YYX] : YYUNDEFTOK)
@@ -395,7 +401,7 @@ static const yytype_uint8 yytranslate[] =
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     2,     2,     2,     2,
        2,     2,     2,     2,     2,     2,     1,     2,     3,     4,
-       5,     6,     7
+       5,     6,     7,     8,     9
 };
 
 #if YYDEBUG
@@ -403,21 +409,21 @@ static const yytype_uint8 yytranslate[] =
    YYRHS.  */
 static const yytype_uint8 yyprhs[] =
 {
-       0,     0,     3,     5,     7,    11,    15,    17,    21,    25
+       0,     0,     3,     5,     7,    11,    15,    17,    21,    23
 };
 
 /* YYRHS -- A `-1'-separated list of the rules' RHS.  */
 static const yytype_int8 yyrhs[] =
 {
-       9,     0,    -1,    10,    -1,    11,    -1,    10,     4,    11,
-      -1,    10,     5,    11,    -1,    12,    -1,    11,     6,    12,
-      -1,    11,     7,    12,    -1,     3,    -1
+      11,     0,    -1,    12,    -1,    13,    -1,    12,     6,    13,
+      -1,    12,     7,    13,    -1,    14,    -1,    13,     8,    14,
+      -1,     4,    -1,     3,    -1
 };
 
 /* YYRLINE[YYN] -- source line where rule number YYN was defined.  */
 static const yytype_uint8 yyrline[] =
 {
-       0,    37,    37,    40,    41,    42,    48,    49,    50,    57
+       0,    41,    41,    44,    45,    82,   124,   125,   168,   169
 };
 #endif
 
@@ -426,9 +432,9 @@ static const yytype_uint8 yyrline[] =
    First, the terminals, then, starting at YYNTOKENS, nonterminals.  */
 static const char *const yytname[] =
 {
-  "$end", "error", "$undefined", "entero", "suma", "resta",
-  "multiplicacion", "division", "$accept", "inicial", "expr", "term",
-  "factor", 0
+  "$end", "error", "$undefined", "flotante", "entero", "caracter", "suma",
+  "resta", "multiplicacion", "division", "$accept", "inicial", "expr",
+  "term", "factor", 0
 };
 #endif
 
@@ -437,20 +443,20 @@ static const char *const yytname[] =
    token YYLEX-NUM.  */
 static const yytype_uint16 yytoknum[] =
 {
-       0,   256,   257,   258,   259,   260,   261,   262
+       0,   256,   257,   258,   259,   260,   261,   262,   263,   264
 };
 # endif
 
 /* YYR1[YYN] -- Symbol number of symbol that rule YYN derives.  */
 static const yytype_uint8 yyr1[] =
 {
-       0,     8,     9,    10,    10,    10,    11,    11,    11,    12
+       0,    10,    11,    12,    12,    12,    13,    13,    14,    14
 };
 
 /* YYR2[YYN] -- Number of symbols composing right hand side of rule YYN.  */
 static const yytype_uint8 yyr2[] =
 {
-       0,     2,     1,     1,     3,     3,     1,     3,     3,     1
+       0,     2,     1,     1,     3,     3,     1,     3,     1,     1
 };
 
 /* YYDEFACT[STATE-NAME] -- Default rule to reduce with in state
@@ -458,29 +464,29 @@ static const yytype_uint8 yyr2[] =
    means the default is an error.  */
 static const yytype_uint8 yydefact[] =
 {
-       0,     9,     0,     2,     3,     6,     1,     0,     0,     0,
-       0,     4,     5,     7,     8
+       0,     9,     8,     0,     2,     3,     6,     1,     0,     0,
+       0,     4,     5,     7
 };
 
 /* YYDEFGOTO[NTERM-NUM].  */
 static const yytype_int8 yydefgoto[] =
 {
-      -1,     2,     3,     4,     5
+      -1,     3,     4,     5,     6
 };
 
 /* YYPACT[STATE-NUM] -- Index in YYTABLE of the portion describing
    STATE-NUM.  */
-#define YYPACT_NINF -5
+#define YYPACT_NINF -6
 static const yytype_int8 yypact[] =
 {
-       4,    -5,     2,    -4,    -3,    -5,    -5,     4,     4,     4,
-       4,    -3,    -3,    -5,    -5
+      -3,    -6,    -6,     4,    -4,     0,    -6,    -6,    -3,    -3,
+      -3,     0,     0,    -6
 };
 
 /* YYPGOTO[NTERM-NUM].  */
 static const yytype_int8 yypgoto[] =
 {
-      -5,    -5,    -5,    -2,    -1
+      -6,    -6,    -6,    -2,    -5
 };
 
 /* YYTABLE[YYPACT[STATE-NUM]].  What to do in state STATE-NUM.  If
@@ -490,20 +496,20 @@ static const yytype_int8 yypgoto[] =
 #define YYTABLE_NINF -1
 static const yytype_uint8 yytable[] =
 {
-       7,     8,     6,     9,    10,    11,    12,     1,    13,    14
+       1,     2,     8,     9,     7,    13,    11,    12,    10
 };
 
 static const yytype_uint8 yycheck[] =
 {
-       4,     5,     0,     6,     7,     7,     8,     3,     9,    10
+       3,     4,     6,     7,     0,    10,     8,     9,     8
 };
 
 /* YYSTOS[STATE-NUM] -- The (internal number of the) accessing
    symbol of state STATE-NUM.  */
 static const yytype_uint8 yystos[] =
 {
-       0,     3,     9,    10,    11,    12,     0,     4,     5,     6,
-       7,    11,    11,    12,    12
+       0,     3,     4,    11,    12,    13,    14,     0,     6,     7,
+       8,    13,    13,    14
 };
 
 #define yyerrok		(yyerrstatus = 0)
@@ -1318,38 +1324,146 @@ yyreduce:
   switch (yyn)
     {
         case 2:
-#line 37 "Semantico.y"
-    {printf("Resultado es %d \n",(yyval.ent));}
+#line 41 "Semantico.y"
+    {printf("Resultado es %.2f \n",(yyval.flot));}
     break;
 
   case 4:
-#line 41 "Semantico.y"
-    {(yyval.ent) = (yyvsp[(1) - (3)].ent) + (yyvsp[(3) - (3)].ent);}
+#line 45 "Semantico.y"
+    {
+        if (sizeof((yyvsp[(1) - (3)].flot)) == 1 || sizeof((yyvsp[(3) - (3)].flot)) == 1)
+        {
+        printf("No se puede realizar sumas con caracteres\n");
+        }
+        else{
+            int cambio = (yyvsp[(1) - (3)].flot);
+            int cambio2 = (yyvsp[(3) - (3)].flot);
+
+            if ((yyvsp[(1) - (3)].flot) - cambio)
+            {
+                if ((yyvsp[(3) - (3)].flot) - cambio2)
+                {
+                    (yyval.flot) = (yyvsp[(1) - (3)].flot) + (yyvsp[(3) - (3)].flot);
+                    printf("se sumarán\n");
+                }
+                else
+                {
+                    (yyval.flot) = (yyvsp[(1) - (3)].flot) + (yyvsp[(3) - (3)].flot);
+                    printf("se sumará  \n");
+                }
+            }
+            else
+            {
+                if ((yyvsp[(3) - (3)].flot) - cambio2)
+                {
+                (yyval.flot) = (yyvsp[(1) - (3)].flot) + (yyvsp[(3) - (3)].flot);
+                printf("se sumará \n");
+                }
+                else
+                {
+                (yyval.flot) = (yyvsp[(1) - (3)].flot) + (yyvsp[(3) - (3)].flot);
+                printf("Se sumarán\n");
+                }
+            }
+            }
+            }
     break;
 
   case 5:
-#line 42 "Semantico.y"
-    { (yyval.ent) = (yyvsp[(1) - (3)].ent) - (yyvsp[(3) - (3)].ent);}
+#line 82 "Semantico.y"
+    {
+        if (sizeof((yyvsp[(1) - (3)].flot)) == 1 || sizeof((yyvsp[(3) - (3)].flot)) == 1)
+        {
+        printf("No se puede realizar sumas con caracteres\n");
+        }
+        else{
+            int cambio = (yyvsp[(1) - (3)].flot);
+            int cambio2 = (yyvsp[(3) - (3)].flot);
+
+            if ((yyvsp[(1) - (3)].flot) - cambio)
+            {
+                if ((yyvsp[(3) - (3)].flot) - cambio2)
+                {
+                    (yyval.flot) = (yyvsp[(1) - (3)].flot) - (yyvsp[(3) - (3)].flot);
+                    printf("se restaran\n");
+                }
+                else
+                {
+                    (yyval.flot) = (yyvsp[(1) - (3)].flot) - (yyvsp[(3) - (3)].flot);
+                    printf("se restarán  \n");
+                }
+            }
+            else
+            {
+                if ((yyvsp[(3) - (3)].flot) - cambio2)
+                {
+                (yyval.flot) = (yyvsp[(1) - (3)].flot) - (yyvsp[(3) - (3)].flot);
+                printf("se restarán \n");
+                }
+                else
+                {
+                (yyval.flot) = (yyvsp[(1) - (3)].flot) - (yyvsp[(3) - (3)].flot);
+                printf("Se restarán\n");
+                }
+            }
+            }
+            }
     break;
 
   case 7:
-#line 49 "Semantico.y"
-    {(yyval.ent) = (yyvsp[(1) - (3)].ent) * (yyvsp[(3) - (3)].ent);}
+#line 125 "Semantico.y"
+    {
+        if (sizeof((yyvsp[(1) - (3)].flot)) == 1 || sizeof((yyvsp[(3) - (3)].flot)) == 1)
+        {
+        printf("No se puede realizar sumas con caracteres\n");
+        }
+        else{
+            int cambio = (yyvsp[(1) - (3)].flot);
+            int cambio2 = (yyvsp[(3) - (3)].flot);
+
+            if ((yyvsp[(1) - (3)].flot) - cambio)
+            {
+                if ((yyvsp[(3) - (3)].flot) - cambio2)
+                {
+                    (yyval.flot) = (yyvsp[(1) - (3)].flot) * (yyvsp[(3) - (3)].flot);
+                    printf("se restaran\n");
+                }
+                else
+                {
+                    (yyval.flot) = (yyvsp[(1) - (3)].flot) * (yyvsp[(3) - (3)].flot);
+                    printf("se restarán  \n");
+                }
+            }
+            else
+            {
+                if ((yyvsp[(3) - (3)].flot) - cambio2)
+                {
+                (yyval.flot) = (yyvsp[(1) - (3)].flot) * (yyvsp[(3) - (3)].flot);
+                printf("se restarán \n");
+                }
+                else
+                {
+                (yyval.flot) = (yyvsp[(1) - (3)].flot) * (yyvsp[(3) - (3)].flot);
+                printf("Se restarán\n");
+                }
+            }
+            }
+            }
     break;
 
   case 8:
-#line 50 "Semantico.y"
-    {(yyval.ent) = (yyvsp[(1) - (3)].ent) / (yyvsp[(3) - (3)].ent);}
+#line 168 "Semantico.y"
+    { (yyval.flot) = (yyvsp[(1) - (1)].ent);}
     break;
 
   case 9:
-#line 57 "Semantico.y"
-    { (yyval.ent) = (yyvsp[(1) - (1)].ent);}
+#line 169 "Semantico.y"
+    { (yyval.flot) = (yyvsp[(1) - (1)].flot);}
     break;
 
 
 /* Line 1267 of yacc.c.  */
-#line 1353 "y.tab.c"
+#line 1467 "y.tab.c"
       default: break;
     }
   YY_SYMBOL_PRINT ("-> $$ =", yyr1[yyn], &yyval, &yyloc);
@@ -1563,13 +1677,13 @@ yyreturn:
 }
 
 
-#line 65 "Semantico.y"
+#line 177 "Semantico.y"
 
 
 /* Ejecucion del programa*/
 
 void yyerror(char *s){
-    printf ("Error de sintaxis");
+    printf ("No se acepta la operacion\n");
 
 
 }
